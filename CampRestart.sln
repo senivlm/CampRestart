@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32516.85
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CampRestart", "CampRestart\CampRestart.csproj", "{EC13FDFD-EBCD-444C-A85A-F45CF0CB935F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC13FDFD-EBCD-444C-A85A-F45CF0CB935F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC13FDFD-EBCD-444C-A85A-F45CF0CB935F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC13FDFD-EBCD-444C-A85A-F45CF0CB935F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC13FDFD-EBCD-444C-A85A-F45CF0CB935F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CDF64C60-C7A1-4856-81D9-71E0AE59BF18}
+	EndGlobalSection
+EndGlobal
