@@ -168,6 +168,13 @@ namespace CampRestart.VectorsAndMatrix
                 return false;
             }
         }
+        public void ManualReverse()
+        {
+            for (int i = 0; i < array.Length; i++)
+            {
+
+            }
+        }
 
         public override string ToString()
         {
