@@ -4,11 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CampRestart.VectorsAndMatrix
+namespace Task3
 {
     internal class Vector
     {
         int[] array;
+        public int[] ArrayProp
+        {
+            get { return array; }
+            set { array = value; }
+        }
 
         public int this[int index]
         {
@@ -22,7 +27,6 @@ namespace CampRestart.VectorsAndMatrix
                 {
                     throw new Exception("Index out of range array");
                 }
-
             }
             set
             {
@@ -43,35 +47,97 @@ namespace CampRestart.VectorsAndMatrix
                 array[i] = random1.Next(a, b);
             }
         }
+        public void Bubble()
+        {
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                for (int j = 0; j < array.Length - i - 1; j++)
+                {
+                    if (array[j + 1] > array[j])
+                    {
+                        int item = array[j + 1];
+                        array[j + 1] = array[j];
+                        array[j] = item;
+                    }
+                }
+            }
+        }
+        public void Counting()
+        {
+            int max = array[0];
+            int min = array[0];
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > max)
+                {
+                    max = array[i];
+                }
+                if (array[i] < min)
+                {
+                    min = array[i];
+                }
+            }
+            int[] temp = new int[max - min + 1];
+            for (int i = 0; i < array.Length; i++)
+            {
+                temp[array[i] - min]++;
+            }
+            int count = 0;
+            for (int i = 0; i < temp.Length; i++)
+            {
+                for (int j = 0; j < temp[i]; j++)
+                {
+                    array[count] = i + min;
+                    count++;
+
+                }
+
+            }
+        }
+
         public void InitShuffle()
         {
-            int index = Array.IndexOf(array, 0);
-            Console.WriteLine(index);
-            //int number;
-            //Random random1 = new Random();
+            int number;
+            int count = 0;
+            Random random1 = new Random();
 
-            //for (int i = 0; i < array.Length; i++)
-            //{
-            //    while (true)
-            //    {
-            //        number = random1.Next(1, array.Length + 1);
-            //        bool isExist = false;
-            //        for (int j = 0; j < i; j++)
-            //        {
-            //            if (array[j] == number)
-            //            {
-            //                isExist = true;
-            //                break;
-            //            }
-            //        }
-            //        if(!isExist)
-            //        {
-            //            array[i] = number;
-            //            break;
-            //        }
+            while (count < array.Length)
+            {
+                number = random1.Next(1, array.Length + 1);
+                if (Array.IndexOf(array, number) == -1)
+                {
+                    array[count] = number;
+                    count++;
+                }
+            }
+        }
+        public void InitShuffleFirst()
+        {
+            int number;
+            Random random1 = new Random();
 
-            //    }
-            //}
+            for (int i = 0; i < array.Length; i++)
+            {
+                while (true)
+                {
+                    number = random1.Next(1, array.Length + 1);
+                    bool isExist = false;
+                    for (int j = 0; j < i; j++)
+                    {
+                        if (array[j] == number)
+                        {
+                            isExist = true;
+                            break;
+                        }
+                    }
+                    if (!isExist)
+                    {
+                        array[i] = number;
+                        break;
+                    }
+
+                }
+            }
 
         }
         public Pair[] CalcFrequency()
@@ -108,6 +174,27 @@ namespace CampRestart.VectorsAndMatrix
             }
             return result;
         }
+        public Pair LongestFrequency(Pair[] pairs)
+        {
+            int maxFrequency = 0;
+            Pair result = new Pair(0, 0);
+            for (int i = 0; i < pairs.Length; i++)
+            {
+                if (pairs[i].Frequency > maxFrequency)
+                {
+                    maxFrequency = pairs[i].Frequency;
+                }
+            }
+            for (int i = 0; i < pairs.Length; i++)
+            {
+                if (pairs[i].Frequency == maxFrequency)
+                {
+                    result = pairs[i];
+                }
+            }
+            return result;
+        }
+
         public bool IsPalindrom(string input)
         {
             {
@@ -134,7 +221,7 @@ namespace CampRestart.VectorsAndMatrix
                 }
             }
         }
-        public bool IsIntPalindrom(string input)
+        public bool IsIntPalindrom(string input) //also for enjoyment
         {
             string[] strArray = input.Split(' ');
             int[] result = new int[strArray.Length];
@@ -167,15 +254,31 @@ namespace CampRestart.VectorsAndMatrix
                 Console.WriteLine("It isn`t a palindrom");
                 return false;
             }
-        }
+        } 
+
         public void ManualReverse()
         {
-            for (int i = 0; i < array.Length; i++)
+            int[] temp = new int[array.Length];
+            for (int i = array.Length, j = 0; i > 0; i--, j++)
             {
 
+                int number = array[i - 1];
+                temp[j] = number;
+            }
+            array = temp;
+            for (int i = 0; i < array.Length; i++)
+            {
+                Console.Write(array[i] + " ");
             }
         }
-
+        public void StandartReverse()
+        {
+            Array.Reverse(array);
+            for (int i = 0; i < array.Length; i++)
+            {
+                Console.Write(array[i] + " ");
+            }
+        }
         public override string ToString()
         {
             string line = "";

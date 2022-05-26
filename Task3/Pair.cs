@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CampRestart
+namespace Task3
 {
     internal class Pair
     {
@@ -16,8 +16,8 @@ namespace CampRestart
 
         public Pair(int number, int frequency)
         {
-            this.Number = number;
-            this.Frequency = frequency;
+            Number = number;
+            Frequency = frequency;
         }
         public override string ToString()
         {
@@ -33,9 +33,10 @@ namespace CampRestart
             {
                 return false;
             }
-            return (this.Number == ((Pair)obj).Number) && (this.Frequency == ((Pair)obj).Frequency);
+            return Number == ((Pair)obj).Number && Frequency == ((Pair)obj).Frequency;
 
         }
+        
         public override int GetHashCode()
         {
             return base.GetHashCode();
