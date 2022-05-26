@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CampRestart
+namespace Task2And3
 {
     internal class Meat : Product
     {

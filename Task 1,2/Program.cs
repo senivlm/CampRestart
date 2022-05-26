@@ -1,10 +1,11 @@
-﻿using Task1And2;
+﻿
+using Task2And3;
 
 try
 {
     Product product = new Product("Product1", 12.5, 13.0);
     Console.WriteLine(product.ToString());
-    Dairy_products dairy1 = new Dairy_products("Milk", 1.0, DateTime.Now, 12.5);
+    DairyProducts dairy1 = new DairyProducts("Milk", 1.0, DateTime.Now, 12.5);
     Console.WriteLine(dairy1.ToString());
     Meat meat = new Meat("Meat1", Type.Chicken, Category.Extra, 1.3, 12.4);
     Console.WriteLine(meat.ToString());
