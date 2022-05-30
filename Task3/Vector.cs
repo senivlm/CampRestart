@@ -39,6 +39,17 @@ namespace Task3
         {
             array = new int[n];
         }
+        
+        public override string ToString()
+        {
+            string line = "";
+            for (int i = 0; i < array.Length; i++)
+            {
+                line += array[i] + " ";
+            }
+            return line;
+        }
+
         public void InitRandom(int a, int b)
         {
             Random random1 = new Random();
@@ -62,6 +73,7 @@ namespace Task3
                 }
             }
         }
+        
         public void Counting()
         {
             int max = array[0];
@@ -94,7 +106,6 @@ namespace Task3
 
             }
         }
-
         public void InitShuffle()
         {
             int number;
@@ -279,14 +290,6 @@ namespace Task3
                 Console.Write(array[i] + " ");
             }
         }
-        public override string ToString()
-        {
-            string line = "";
-            for (int i = 0; i < array.Length; i++)
-            {
-                line += array[i] + " ";
-            }
-            return line;
-        }
+       
     }
 }

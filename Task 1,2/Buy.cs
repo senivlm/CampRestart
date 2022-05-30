@@ -4,36 +4,42 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task2And3
+namespace Task1And2
 {
-
-    internal class Buy
+    public class Buy
     {
+        private string name;
         private int boughtNumber;
-        private double boughtPrice;
         private double boughtWeight;
+        private double boughtPrice;
+
+        public string Name { get; set; }
         public int BoughtNumber { get; set; }
-        public double BoughtPrice { get; set; }
         public double BoughtWeight { get; set; }
+        public double BoughtPrice { get; set; }
 
-        public Buy() : this(0, 0.0, 0.0) { }
+        public Buy() : this(null, 0, 0.0, 0.0) { }
 
-        public Buy(int boughtNumber, double boughtWeight, double boughtPrice)
+        public Buy(string name, int boughtNumber, double boughtWeight, double boughtPrice)
         {
+            Name = name;
             BoughtNumber = boughtNumber;
             BoughtWeight = boughtWeight;
             BoughtPrice = boughtPrice;
         }
-
         public override string ToString()
         {
-            return string.Format("Goods: " + BoughtNumber + " Weight: " + BoughtWeight +
+            return string.Format("Goods: " + Name + " "+ BoughtNumber + " Weight: " + BoughtWeight +
                 " Price: " + BoughtPrice);
         }
-        public override bool Equals(object obj)
+        public override bool Equals(object? otherBuy)
         {
-            return Equals(obj as Buy);
+            return Name.Equals(((Buy)otherBuy).Name)&&
+                BoughtNumber.Equals(((Buy)otherBuy).BoughtNumber) &&
+                BoughtWeight.Equals(((Buy)otherBuy).BoughtWeight) &&
+                BoughtPrice.Equals(((Buy)otherBuy).BoughtPrice);
         }
+
         public void Parse(string str)
         {
             if (str == null)

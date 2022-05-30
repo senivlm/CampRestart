@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task2And3
+namespace Task1And2
 {
     internal class Product
     {
         private string name;
         private double weight;
         private double price;
+        
         public string Name { get; set; }
         public double Weight { get; set; }
         public double Price { get; set; }
@@ -22,29 +23,33 @@ namespace Task2And3
             Price = price;
             Weight = weight;
         }
-        public virtual double ChangePrice(int rate)
-        {
-            Price = (double)(Price * rate / 100.0);
-            return Price;
-        }
         public override string ToString()
         {
             return string.Format("Name: " + Name + " Weight: " + Weight
                 + " Price: " + Price);
         }
-        public override bool Equals(object obj)
+        public override bool Equals(object? otherProduct)
         {
-            return Equals(obj as Product);
+            return Name.Equals(((Product)otherProduct).Name) &&
+                Weight.Equals(((Product)otherProduct).Weight) &&
+                Price.Equals(((Product)otherProduct).Price);
         }
 
+        public virtual double ChangePrice(int rate)
+        {
+            Price = (double)(Price * rate / 100.0);
+            return Price;
+        }
+        
         public virtual void Parse(string str)
         {
-            if (str == null)
+            if (str == null || str.Split(' ').Length != 3)
             {
-                throw new ArgumentNullException();
+                throw new ArgumentException("Wrong string!");
             }
             string[] arrayStr = str.Split(' ');
             Name = arrayStr[0];
+            
             if (!(double.TryParse(arrayStr[1], out weight)))
             {
                 throw new ArgumentException();

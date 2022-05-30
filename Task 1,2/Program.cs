@@ -1,5 +1,5 @@
 ﻿
-using Task2And3;
+using Task1And2;
 
 try
 {
@@ -10,10 +10,9 @@ try
     Meat meat = new Meat("Meat1", Type.Chicken, Category.Extra, 1.3, 12.4);
     Console.WriteLine(meat.ToString());
 
-    Buy buyer1 = new Buy(1, 12.4, 13.2);
+    Buy buyer1 = new Buy("Product3", 1, 12.4, 13.2);
     Console.WriteLine(buyer1.ToString());
-    Check checkBuy = new Check("Product2", 2, 13.5, 34);
-    Console.WriteLine(checkBuy.ToString());
+    
     Storage myStorage = new Storage(2, 23.4, 22.6);
     Console.WriteLine(myStorage.ToString());
 }

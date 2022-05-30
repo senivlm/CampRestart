@@ -36,10 +36,6 @@ namespace Task3
             return Number == ((Pair)obj).Number && Frequency == ((Pair)obj).Frequency;
 
         }
-        
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
+
     }
 }

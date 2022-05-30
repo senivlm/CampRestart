@@ -4,18 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task2And3
+namespace Task1And2
 {
     internal class Meat : Product
     {
         public Type MeatType { get; set; }
         public Category MeatCategory { get; set; }
         public Meat() : this(null, default(Type), default(Category), 0.0, 0.0) { }
+        
         public Meat(string name, Type meatType, Category meatCategory, double weight, double price)
             : base(name, weight, price)
         {
             MeatCategory = meatCategory;
             MeatType = meatType;
+        }
+        public override string ToString()
+        {
+            return base.ToString() + " Type: " + MeatType + " Category: " + MeatCategory;
+        }
+        public override bool Equals(object? otherMeat)
+        {
+            return Name.Equals(((Meat)otherMeat).Name) &&
+                MeatType.Equals(((Meat)otherMeat).MeatType) &&
+                MeatCategory.Equals(((Meat)otherMeat).MeatCategory) &&
+                Weight.Equals(((Meat)otherMeat).Weight) &&
+                Price.Equals(((Meat)otherMeat).Price);
         }
         public override double ChangePrice(int rate)
         {
@@ -41,14 +54,7 @@ namespace Task2And3
             }
             return Price;
         }
-        public override string ToString()
-        {
-            return base.ToString() + " Type: " + MeatType + " Category: " + MeatCategory;
-        }
-        public override bool Equals(object obj)
-        {
-            return Equals(obj as Meat);
-        }
+        
         public override void Parse(string str)
         {
             base.Parse(str);
