@@ -207,7 +207,7 @@ namespace Task3
         }
 
         public bool IsPalindrom(string input)
-        {
+        {//Алгоритмічно неправильно!!! Проконсультую усно
             {
                 string equalStr1 = "";
                 string equalStr2 = "";
@@ -255,6 +255,7 @@ namespace Task3
                     break;
                 }
             }
+            //роздруки не мають бути в методах
             if (count > 0 || result.Length == 1)
             {
                 Console.WriteLine("It`s a palindrom"); ;
