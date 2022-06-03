@@ -305,16 +305,18 @@ namespace Task3And4
             }
         }
 
-        public int[] QuickSortWithFirstEl()
+        public int[] QuickSort()
         {
-            return QuickSortWithFirstEl(0, array.Length - 1);
+            return QuickSort(0, array.Length - 1);
         }
         
-        public int[] QuickSortWithFirstEl(int leftIndex, int rightIndex)
+        public int[] QuickSort(int leftIndex, int rightIndex)
         {
             int i = leftIndex;
             int j = rightIndex;
-            int pivot = array[leftIndex];
+            ////int pivot = array[leftIndex]; //for a first element as a pivot
+            //int pivot = array[rightIndex]; //for a last element as a pivot
+            int pivot = array[(leftIndex + rightIndex) / 2]; //for a middle element as a pivot
 
             while (i <= j)
             {
@@ -338,11 +340,11 @@ namespace Task3And4
             }
             if (leftIndex < j)
             {
-                QuickSortWithFirstEl(leftIndex, j);
+                QuickSort(leftIndex, j);
             }
             if (i < rightIndex)
             {
-                QuickSortWithFirstEl(i, rightIndex);
+                QuickSort(i, rightIndex);
             }
             return array;
         }
