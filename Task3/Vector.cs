@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
-namespace Task3
+namespace Task3And4
 {
     internal class Vector
     {
@@ -39,7 +40,7 @@ namespace Task3
         {
             array = new int[n];
         }
-        
+
         public override string ToString()
         {
             string line = "";
@@ -58,6 +59,19 @@ namespace Task3
                 array[i] = random1.Next(a, b);
             }
         }
+        public void ManualInitialisation()
+        {
+            Console.WriteLine("Enter amount of numbers:");
+            int amount = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter numbers:");
+            array = new int[amount];
+            for (int i = 0; i < array.Length; i++)
+            {
+                int number = int.Parse(Console.ReadLine());
+                array[i] = number;
+            }
+        }
+
         public void Bubble()
         {
             for (int i = 0; i < array.Length - 1; i++)
@@ -73,7 +87,7 @@ namespace Task3
                 }
             }
         }
-        
+
         public void Counting()
         {
             int max = array[0];
@@ -265,7 +279,7 @@ namespace Task3
                 Console.WriteLine("It isn`t a palindrom");
                 return false;
             }
-        } 
+        }
 
         public void ManualReverse()
         {
@@ -290,6 +304,113 @@ namespace Task3
                 Console.Write(array[i] + " ");
             }
         }
-       
+
+        public int[] QuickSortWithFirstEl()
+        {
+            return QuickSortWithFirstEl(0, array.Length - 1);
+        }
+        
+        public int[] QuickSortWithFirstEl(int leftIndex, int rightIndex)
+        {
+            int i = leftIndex;
+            int j = rightIndex;
+            int pivot = array[leftIndex];
+
+            while (i <= j)
+            {
+                while (array[i] < pivot)
+                {
+                    i++;
+                }
+                while (array[j] > pivot)
+                {
+                    j--;
+                }
+                if (i <= j)
+                {
+                    int temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                    i++;
+                    j--;
+                }
+
+            }
+            if (leftIndex < j)
+            {
+                QuickSortWithFirstEl(leftIndex, j);
+            }
+            if (i < rightIndex)
+            {
+                QuickSortWithFirstEl(i, rightIndex);
+            }
+            return array;
+        }
+        
+        public void Merge(int left, int right, int separator)
+        {
+            int i = left;
+            int j = separator;
+            int count = 0; //count for temp[]
+            int[] temp = new int[right - left];
+            while (i < separator && j < right)
+            {
+                if (this.array[i] < this.array[j])
+                {
+                    temp[count] = this.array[i];
+                    i++;
+                }
+                else
+                {
+                    temp[count] = this.array[j];
+                    j++;
+                }
+                count++;
+            }
+            if (i == separator)
+            {
+                for (int k = j; k < right; k++)
+                {
+                    temp[count] = this.array[k];
+                    count++;
+                }
+            }
+            else
+            {
+                while (i < separator)
+                {
+                    temp[count] = this.array[i];
+                    i++;
+                    count++;
+                }
+            }
+            for (int m = 0; m < temp.Length; m++)
+            {
+                this.array[m + left] = temp[m];
+            }
+        }
+
+        public void SplitMergeSort()
+        {
+            SplitMergeSort(0, array.Length);
+        }
+
+        public void SplitMergeSort(int start, int end)
+        {
+            if (end - start <= 1)
+            {
+                return;
+            }
+            int middle = (end + start) / 2;
+            SplitMergeSort(start, middle);
+            SplitMergeSort(middle, end);
+            this.Merge(start, end, middle);
+        }
+
+        public void ReadFromFile(string fileName)
+        {
+            StreamReader reader = new StreamReader(fileName);
+            string line = reader.ReadLine();
+        }
     }
 }
