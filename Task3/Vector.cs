@@ -120,6 +120,7 @@ namespace Task3And4
 
             }
         }
+        
         public void InitShuffle()
         {
             int number;
@@ -165,6 +166,7 @@ namespace Task3And4
             }
 
         }
+        
         public Pair[] CalcFrequency()
         {
             Pair[] pairs = new Pair[array.Length];
@@ -309,7 +311,6 @@ namespace Task3And4
         {
             return QuickSort(0, array.Length - 1);
         }
-        
         public int[] QuickSort(int leftIndex, int rightIndex)
         {
             int i = leftIndex;
@@ -396,7 +397,6 @@ namespace Task3And4
         {
             SplitMergeSort(0, array.Length);
         }
-
         public void SplitMergeSort(int start, int end)
         {
             if (end - start <= 1)
@@ -408,11 +408,62 @@ namespace Task3And4
             SplitMergeSort(middle, end);
             this.Merge(start, end, middle);
         }
-
-        public void ReadFromFile(string fileName)
+        
+        public string[] ReadFromFile(string fileName)
         {
-            StreamReader reader = new StreamReader(fileName);
-            string line = reader.ReadLine();
+            string[] arrayFromFile = new string[2];
+            try
+            {
+                StreamReader reader = new StreamReader(fileName);
+                arrayFromFile[0] = reader.ReadLine();
+                arrayFromFile[1] = reader.ReadToEnd();
+                reader.Close();
+            }
+            catch (FileNotFoundException)
+            {
+                Console.WriteLine("File not found");
+            }
+            return arrayFromFile;
         }
+
+        public void HeapStorage(int start, int end)
+        {
+            int max = end;
+            int left = 2 * end + 1;
+            int right = 2 * end + 2;
+
+            if (left <= start && array[left] >= array[max])
+            {
+                max = left;
+            }
+            if (right <= start && array[right] > array[max])
+            {
+                max = right;
+            }
+            if (max != end)
+            {
+                int temp = array[end];
+                array[end] = array[max];
+                array[max] = temp;
+                HeapStorage(start, max);
+            }
+        }
+        public void HeapSort()
+        {
+            int temp;
+            for (int i = array.Length / 2; i >= 0; i--)
+            {
+                HeapStorage(array.Length - 1, i);
+            }
+            for (int i = array.Length - 1; i >= 0; i--)
+            {
+                temp = array[i];
+                array[i] = array[0];
+                array[0] = temp;
+
+                HeapStorage(i - 1, 0);
+            }
+        }
+
     }
 }

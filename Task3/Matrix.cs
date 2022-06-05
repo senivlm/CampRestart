@@ -10,7 +10,22 @@ namespace Task3And4
     {
         private int rowCount;
         private int colCount;
+        
         private int[,] matrSquare;
+
+        public override string ToString()
+        {
+            string line = "";
+            for (int i = 0; i < matrSquare.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrSquare.GetLength(1); j++)
+                {
+                    line += matrSquare[i, j] + " ";
+                }
+                line += '\n';
+            }
+            return line;
+        }
 
         public void SpiralFulling(int[,] matr)
         {
@@ -31,16 +46,38 @@ namespace Task3And4
                 }
             }
         }
-        public void Print(int[,] matr)
+        
+        public void Print()
         {
-            for (int i = 0; i < matr.GetLength(0); i++)
+            for (int i = 0; i < matrSquare.GetLength(0); i++)
             {
-                for (int j = 0; j < matr.GetLength(1); j++)
+                for (int j = 0; j < matrSquare.GetLength(1); j++)
                 {
-                    Console.Write(matr[i, j] + " ");
+                    Console.Write(matrSquare[i, j] + " ");
                 }
                 Console.WriteLine();
             }
+        }
+        
+        public void ReadMatrixFromFile(StreamReader reader)
+        {
+            string line = reader.ReadLine();
+            string[] sizes = line.Split(' ');
+            
+            this.rowCount = int.Parse(sizes[0]);
+            this.colCount = int.Parse(sizes[1]);
+
+            matrSquare = new int[rowCount, colCount];
+
+            for (int i = 0; i < rowCount; i++)
+            {
+                string[] items = reader.ReadLine().Split(' ');
+                for (int j = 0; j < colCount; j++)
+                {
+                    matrSquare[i, j] = int.Parse(items[j]);
+                }
+            }
+
         }
     }
 }

@@ -29,6 +29,16 @@ Vector vector4 = new Vector();
 vector4.ManualInitialisation();
 
 Console.WriteLine(vector4);
-vector4.QuickSort();
+vector4.HeapSort();
 
 Console.WriteLine(vector4);
+
+//Vector vector5 = new Vector();
+//Console.WriteLine(vector5.ReadFromFile("FileForReadA.txt"));
+
+//using (StreamReader reader = new StreamReader("Matrix.txt"))
+//{
+//    Matrix matrix = new Matrix();
+//    matrix.ReadMatrixFromFile(reader);
+//    Console.WriteLine(matrix);
+//}
