@@ -409,22 +409,6 @@ namespace Task3And4
             this.Merge(start, end, middle);
         }
         
-        public string[] ReadFromFile(string fileName)
-        {
-            string[] arrayFromFile = new string[2];
-            try
-            {
-                StreamReader reader = new StreamReader(fileName);
-                arrayFromFile[0] = reader.ReadLine();
-                arrayFromFile[1] = reader.ReadToEnd();
-                reader.Close();
-            }
-            catch (FileNotFoundException)
-            {
-                Console.WriteLine("File not found");
-            }
-            return arrayFromFile;
-        }
 
         public void HeapStorage(int start, int end)
         {
