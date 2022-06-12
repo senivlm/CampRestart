@@ -408,8 +408,6 @@ namespace Task3And4
             SplitMergeSort(middle, end);
             this.Merge(start, end, middle);
         }
-        
-
         public void HeapStorage(int start, int end)
         {
             int max = end;
@@ -447,6 +445,35 @@ namespace Task3And4
 
                 HeapStorage(i - 1, 0);
             }
+        }
+        public void WriteArrayToFile()
+        {
+            StreamWriter fileOut = new StreamWriter("ArrayFile.txt");
+            for (int i = 0; i < array.Length; i++)
+            {
+                fileOut.Write(array[i] + " ");
+            }
+            fileOut.Close();
+        }
+        public void ReadFromFile()
+        {
+            try
+            {
+                StreamReader fileIn = new StreamReader("ArrayFile.txt"); //but i don't know what i must do with spaces
+                char[] buffer = new char[10];
+                int amount;
+                do
+                {
+                    amount = fileIn.Read(buffer, 0, 10);
+                }
+                while (amount != 0);
+                fileIn.Close();
+            }
+            catch (FileNotFoundException)
+            {
+                Console.WriteLine("File not found");
+            }
+            
         }
 
     }
