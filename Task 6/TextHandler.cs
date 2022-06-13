@@ -66,10 +66,21 @@ namespace Task6
             writer.Close();
         }
 
-        //public string RemoveExtraSpaces()
-        //{
-        //    String result = line;
-        //    String strResult = line.replaceAll("\\s+", " ").trim();
-        //}    
+        public string RemoveExtraSpaces()
+        {
+            line = line.Trim();
+            StringBuilder stringBuilder = new StringBuilder("");
+            
+            for (int i = 0; i < line.Length; i++)
+            {
+                if (line[i] == ' ' && line[i + 1] == ' ')
+                {
+                    continue;
+                }
+                stringBuilder.Append(line[i]);
+            }
+            line = stringBuilder.ToString();
+            return line;
+        }
     }
 }
