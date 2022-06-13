@@ -238,12 +238,10 @@ namespace Task3And4
 
                 if (equalStr1 == equalStr2)
                 {
-                    Console.WriteLine("It's a palindrom");
                     return true;
                 }
                 else
                 {
-                    Console.WriteLine("It isn`t a palindrom");
                     return false;
                 }
             }
@@ -273,12 +271,10 @@ namespace Task3And4
             }
             if (count > 0 || result.Length == 1)
             {
-                Console.WriteLine("It`s a palindrom"); ;
                 return true;
             }
             else
             {
-                Console.WriteLine("It isn`t a palindrom");
                 return false;
             }
         }
