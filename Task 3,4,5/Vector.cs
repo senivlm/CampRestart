@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace Task3And4
+namespace Task3And4And5
 {
     internal class Vector
     {
@@ -120,7 +120,7 @@ namespace Task3And4
 
             }
         }
-        
+
         public void InitShuffle()
         {
             int number;
@@ -166,7 +166,7 @@ namespace Task3And4
             }
 
         }
-        
+
         public Pair[] CalcFrequency()
         {
             Pair[] pairs = new Pair[array.Length];
@@ -345,7 +345,7 @@ namespace Task3And4
             }
             return array;
         }
-        
+
         public void Merge(int left, int right, int separator)
         {
             int i = left;
@@ -451,25 +451,22 @@ namespace Task3And4
             }
             fileOut.Close();
         }
-        public void ReadFromFile()
+        public string ReadFromFile(string path)
         {
-            try
-            {
-                StreamReader fileIn = new StreamReader("ArrayFile.txt"); //but i don't know what i must do with spaces
-                char[] buffer = new char[10];
-                int amount;
-                do
-                {
-                    amount = fileIn.Read(buffer, 0, 10);
-                }
-                while (amount != 0);
-                fileIn.Close();
-            }
-            catch (FileNotFoundException)
-            {
-                Console.WriteLine("File not found");
-            }
+            string str = File.ReadAllText(path);
+            string line = "";
+            int position = str.Length / 2;
             
+            while(!char.IsSeparator(str[position]))
+            {
+                Console.WriteLine(char.IsSeparator(str[position]));
+                position--;
+            }
+            for (int i = 0; i < position; i++)
+            {
+                line += str[i];
+            }
+            return line;
         }
 
     }

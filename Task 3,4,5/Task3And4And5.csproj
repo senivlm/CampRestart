@@ -7,8 +7,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Include="D:\NET Camp\CampRestart\Task 3,4\Vector.cs" Link="Vector.cs" />
-  </ItemGroup>
-
 </Project>

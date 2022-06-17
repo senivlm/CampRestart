@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task3And4
+namespace Task3And4And5
 {
     internal class Matrix
     {

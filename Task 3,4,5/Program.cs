@@ -1,4 +1,4 @@
-﻿using Task3And4;
+﻿using Task3And4And5;
 
 //Vector vector1 = new Vector(20);
 //vector1.InitRandom(1, 5);
@@ -33,11 +33,5 @@
 
 //Console.WriteLine(vector4);
 
-Vector vector5 = new Vector(20);
-vector5.InitRandom(1, 100);
-Console.WriteLine(vector5);
-vector5.WriteArrayToFile();
-
 Vector vector6 = new Vector();
-vector6.ReadFromFile();
-Console.WriteLine(vector6);
+vector6.ReadFromFile("Array.txt");
