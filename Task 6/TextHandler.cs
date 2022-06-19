@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Task6
 {
@@ -34,18 +35,20 @@ namespace Task6
         }
         public override string ToString()
         {
+            line = line.Trim();
             return line;
         }
 
-        public List<string> MakeSentence() //i think, it is another way here
+        public List<string> MakeSentence() 
         {
-            string[] array = line.Split('.'); 
+            string[] array = Regex.Split(line, @"(?<=[\.!\?])\s+");
             for (int i = 0; i < array.Length; i++)
             {
                 strings.Add(array[i]);
             }
             return strings;
         }
+
         
         public List<string> MakeWords()
         {
@@ -65,7 +68,7 @@ namespace Task6
             }
             for (int i = 0; i < strings.Count; i++)
             {
-                writer.WriteLine(strings[i] + ".");
+                writer.WriteLine(strings[i]);
             }
             writer.Close();
         }
@@ -91,31 +94,33 @@ namespace Task6
             string sentence = strings[index];
             return sentence;
         }
-        public void FindMinMaxWord(string sentence) //it doesn't work correctly, MakeSentence is problem?
+        public void FindMinMaxWord(string sentence)
         {
+            sentence = sentence.Trim();
             string[] words = sentence.Split(' ');
-            
+
             int min = words[0].Length;
             int max = words[0].Length;
-            
-            string longestWord = words[0];
-            string shortestWord = words[0];
+
+            string minWord = words[0];
+            string maxWord = words[0];
 
             for (int i = 0; i < words.Length; i++)
             {
-                if (words[i].Length > max)
-                {
-                    longestWord = words[i];
-                    max = words[i].Length;
-                }
                 if (words[i].Length < min)
                 {
-                    shortestWord = words[i];
+                    minWord = words[i];
                     min = words[i].Length;
                 }
+                if (words[i].Length > max)
+                {
+                    maxWord = words[i];
+                    max = words[i].Length;
+                }
             }
-            Console.WriteLine("The longest word in sentence: " + longestWord + '\n' +
-                "The shortest word in sentence: " + shortestWord);
+            
+            Console.WriteLine("The longest word in sentence: " + maxWord + '\n' +
+                "The shortest word in sentence: " + minWord);
         }
         public void PrintMinMaxWordColl()
         {

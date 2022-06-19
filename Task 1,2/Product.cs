@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Task1And2
 {
-    internal class Product
+    public class Product : IComparable
     {
         private string name;
         private double weight;
@@ -68,6 +68,19 @@ namespace Task1And2
             Console.WriteLine("Enter your price");
             double userPrice = double.Parse(Console.ReadLine());
             return new Product(userProduct, userWeight, userPrice);
+        }
+
+        public int CompareTo(object? obj)
+        {
+            int res = -1;
+
+            //if (obj as Product == null)
+            //{
+            //    Console.WriteLine("NULL");
+            //    return res;
+            //}
+            //return this.Name.CompareTo(((Product)obj).Name);
+            return (obj as Product)?.Name.CompareTo(this.Name) ?? -1;
         }
     }
 }

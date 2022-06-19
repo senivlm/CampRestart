@@ -442,7 +442,19 @@ namespace Task3And4And5
                 HeapStorage(i - 1, 0);
             }
         }
-        public void WriteArrayToFile()
+
+        public int[] Parse(string line)
+        {
+            string[] strArr = line.Split(' ');
+            int[] numbArray = new int[strArr.Length];
+
+            for (int i = 0; i < strArr.Length; i++)
+            {
+                numbArray[i] = int.Parse(strArr[i]);
+            }
+            return numbArray;
+        }
+        public void WriteArrayToFile(int[] array)
         {
             StreamWriter fileOut = new StreamWriter("ArrayFile.txt");
             for (int i = 0; i < array.Length; i++)
@@ -451,13 +463,28 @@ namespace Task3And4And5
             }
             fileOut.Close();
         }
+        //public int SetPosition(string str, string pathToResult)
+        //{
+        //    string resultFile = File.ReadAllText(pathToResult);
+        //    int position = 0;
+        //    if(resultFile.Length > 0)
+        //    {
+        //        position = resultFile.Length - 1;
+        //    }
+        //    else
+        //    {
+        //        position = resultFile.Length / 2;
+        //    }
+        //    return position;
+        //}
+
         public string ReadFromFile(string path)
         {
             string str = File.ReadAllText(path);
             string line = "";
             int position = str.Length / 2;
-            
-            while(!char.IsSeparator(str[position]))
+
+            while (!char.IsSeparator(str[position]))
             {
                 Console.WriteLine(char.IsSeparator(str[position]));
                 position--;
@@ -466,8 +493,9 @@ namespace Task3And4And5
             {
                 line += str[i];
             }
+            Console.WriteLine(line);
             return line;
-        }
 
+        }
     }
 }

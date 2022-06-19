@@ -1,5 +1,4 @@
 This text is a task text for six task.
- I'm study the C# and work very hard, but I can't do tasks in time.
- The temp of group is very fast to me, but it is also motivated me to work hardly.
- And I wan't to say thank ms Lilia and whole Sigma Software's Team for good oportunity.
-.
+I'm study the C# and work very hard, but I can't do tasks in time.
+The temp of group is very fast to me, but it is also motivated me to work hardly.
+And I wan't to say thank ms Lilia and whole Sigma Software's Team for good oportunity.
