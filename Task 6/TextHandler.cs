@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 namespace Task6
 {
     internal class TextHandler
-    {
+    {// туи добре, але треба наздолужити. Залиштеся для пояснень.
         List<string> strings = new List<string>();
         
         public List<string> Strings
